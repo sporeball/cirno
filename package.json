@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/sporeball/cirno#readme",
   "dependencies": {
+    "p-event": "^5.0.1",
     "update-notifier": "^6.0.2"
   }
 }
