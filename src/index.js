@@ -5,6 +5,7 @@ import emitter from './event.js';
 
 export function init () {
   global.cirno = {};
+  // need to do it this way to avoid a warning
   global.cirno.version = '0.0.0';
 
   readline.emitKeypressEvents(process.stdin);
@@ -12,9 +13,8 @@ export function init () {
 
   term.fullscreen(true);
   term.cursor(false);
-}
 
-export function listen () {
+  // start listening
   process.stdin.on('keypress', (str, data) => {
     emitter.emit('keypress', data);
   });
