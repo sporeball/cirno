@@ -4,6 +4,9 @@ import * as term from './terminal.js';
 import emitter from './event.js';
 
 export function init () {
+  global.cirno = {};
+  global.cirno.version = '0.0.0';
+
   readline.emitKeypressEvents(process.stdin);
   process.stdin.setRawMode(true);
 

@@ -1,5 +1,5 @@
 {
-  "name": "cirno",
+  "name": "@sporeball/cirno",
   "description": "",
   "version": "0.0.0",
   "type": "module",
@@ -25,6 +25,7 @@
   "homepage": "https://github.com/sporeball/cirno#readme",
   "dependencies": {
     "p-event": "^5.0.1",
+    "picocolors": "^1.0.0",
     "update-notifier": "^6.0.2"
   }
 }

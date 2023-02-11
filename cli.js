@@ -1,26 +1,13 @@
 #!/usr/bin/env node
 
+import colors from 'picocolors';
+
 import * as cirno from './src/index.js';
-// import updateNotifier from 'update-notifier';
+import * as notifier from './src/update-notifier.js';
+import * as term from './src/terminal.js';
 
 cirno.init();
 cirno.listen();
 
-// TODO: this shows up in the normal screen buffer
-// const notifier = updateNotifier({
-// 	pkg: {
-// 		name: 'public-ip',
-// 		version: '0.9.2',
-// 	},
-// 	updateCheckInterval: 0
-// })
-// 	.notify({
-//     isGlobal: true,
-//     boxenOptions: {
-//       padding: 1,
-//       margin: 1,
-//       borderColor: 'yellow',
-//       borderStyle: 'round',
-//       float: 'center',
-//     }
-//   });
+notifier.checkUpdate();
+term.move(1, 1);

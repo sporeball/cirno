@@ -7,6 +7,7 @@ import * as cirno from './index.js';
 const emitter = new events.EventEmitter();
 
 async function keypressEvent (data) {
+  console.log(data);
   if (data.ctrl && data.name === 'c') {
     cirno.exit();
     return;
