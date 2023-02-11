@@ -34,7 +34,11 @@ export async function checkUpdate () {
       }
     });
     // wait for keypress
-    await pEvent(emitter, 'keypress');
+    const keypress = await pEvent(emitter, 'keypress');
+    // preserve the screen on an exit
+    if (keypress.ctrl && keypress.name === 'c') {
+      return;
+    }
     term.clear();
   }
 }
