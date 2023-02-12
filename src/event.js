@@ -7,17 +7,26 @@ import modes from './modes.js';
 // default export
 const emitter = new e.EventEmitter();
 
+/**
+ * `keypress` event callback function
+ * this event is emitted every time a key is pressed,
+ * but some unrelated operations will emit it too
+ * @param {object} data
+ */
 async function keypressEvent (data) {
   // Ctrl+C to exit
   if (data.ctrl && data.name === 'c') {
     return cirno.exit();
   }
-  // look for mode command
+
+  // look for a command provided by the current mode
   if (Object.keys(global.cirno.mode.commands || {}).includes(data.sequence)) {
     return global.cirno.mode.commands[data.sequence]();
+  // ex mode likes to do its own thing
   } else if (global.cirno.mode === modes.Ex) {
     return modes.Ex.keypress(data);
   } else {
+    // debug
     console.log(data);
   }
   // TODO

@@ -5,7 +5,11 @@ import updateNotifier from 'update-notifier';
 import emitter from './event.js';
 import * as term from './terminal.js';
 
+/**
+ * check for a package update, and produce a notification if there is one
+ */
 export async function checkUpdate () {
+  // package instance
   const notifier = updateNotifier({
     pkg: {
       // name: 'public-ip',

@@ -10,8 +10,7 @@ import Splash from './src/views/splash.js';
 async function cli () {
   cirno.init();
   await notifier.checkUpdate();
-  // await splash instead
-  // render something else
+  // TODO: await splash instead, then render something else
   renderView(Splash);
 }
 
