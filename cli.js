@@ -5,8 +5,12 @@ import * as notifier from './src/update-notifier.js';
 import { renderView } from './src/view.js';
 import Splash from './src/views/splash.js';
 
-cirno.init();
+// const file = process.argv[2];
 
-notifier.checkUpdate();
+async function cli () {
+  cirno.init();
+  await notifier.checkUpdate();
+  renderView(Splash);
+}
 
-renderView(Splash);
+cli();
