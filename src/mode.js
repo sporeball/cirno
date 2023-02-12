@@ -8,4 +8,9 @@ export default class Mode {
     this.commands[options.sequence] = options.fn;
     return this;
   }
+
+  addProperty (options) {
+    this[options.name] = options.value;
+    return this;
+  }
 }
