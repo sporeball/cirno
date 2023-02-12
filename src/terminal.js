@@ -6,6 +6,13 @@ export function clear () {
 }
 
 /**
+ * clear from the cursor to the end of the line
+ */
+export function clearLine () {
+  process.stdout.write('\x1b[0K');
+}
+
+/**
  * show or hide the cursor
  * @param {boolean} show
  */

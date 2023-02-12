@@ -14,7 +14,8 @@ let command;
 function init () {
   c = 1;
   command = [':'];
-  // TODO: clear the line
+  term.move(2, process.stdout.rows - 1);
+  term.clearLine();
 }
 
 // keypress override
