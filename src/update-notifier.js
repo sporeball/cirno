@@ -8,8 +8,8 @@ import * as term from './terminal.js';
 export async function checkUpdate () {
   const notifier = updateNotifier({
     pkg: {
-      name: 'public-ip',
-      // name: '@sporeball/cirno',
+      // name: 'public-ip',
+      name: '@sporeball/cirno',
       version: global.cirno.version
     },
     updateCheckInterval: 0

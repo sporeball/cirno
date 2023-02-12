@@ -7,11 +7,15 @@ import * as cirno from './index.js';
 const emitter = new e.EventEmitter();
 
 async function keypressEvent (data) {
-  console.log(data);
   // Ctrl+C to exit
   if (data.ctrl && data.name === 'c') {
-    cirno.exit();
+    return cirno.exit();
   }
+  // look for mode command
+  if (Object.keys(global.cirno.mode.commands).includes(data.sequence)) {
+    return global.cirno.mode.commands[data.sequence]();
+  }
+  console.log(data);
   // TODO
 }
 
