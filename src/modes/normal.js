@@ -4,23 +4,21 @@
  */
 
 import Mode from '../mode.js';
+import modes from '../modes.js';
 import * as term from '../terminal.js';
-import Ex from './ex.js';
 
-/**
- * example function
- */
+// example function
 function sayHello () {
   console.log('hello cirno!');
 }
 
-/**
- * switch to ex mode
- */
+// switch to ex mode
 function exMode () {
   term.move(1, process.stdout.rows - 1);
+  term.cursor(true);
   process.stdout.write(':');
-  global.cirno.mode = Ex;
+  modes.Ex.init();
+  global.cirno.mode = modes.Ex;
 }
 
 const Normal = new Mode('normal')
