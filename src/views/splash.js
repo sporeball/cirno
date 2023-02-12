@@ -1,5 +1,4 @@
 import View from '../view.js';
-import { Text } from '../ui.js';
 
 const Splash = new View('splash')
   .addText({ name: 'cirno', x: 1, y: 1, value: 'cirno', color: 'cyan', bold: true })

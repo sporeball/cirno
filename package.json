@@ -11,7 +11,7 @@
     "cirno": "cli.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "semistandard"
   },
   "repository": {
     "type": "git",
@@ -27,5 +27,8 @@
     "p-event": "^5.0.1",
     "picocolors": "^1.0.0",
     "update-notifier": "^6.0.2"
+  },
+  "devDependencies": {
+    "semistandard": "^16.0.1"
   }
 }

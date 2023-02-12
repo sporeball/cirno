@@ -8,8 +8,8 @@ import * as term from './terminal.js';
 export async function checkUpdate () {
   const notifier = updateNotifier({
     pkg: {
-      // name: 'public-ip',
-      name: '@sporeball/cirno',
+      name: 'public-ip',
+      // name: '@sporeball/cirno',
       version: global.cirno.version
     },
     updateCheckInterval: 0
@@ -24,7 +24,7 @@ export async function checkUpdate () {
     notifier.notify({
       defer: false,
       isGlobal: true,
-      message: `Update available ${colors.yellow(`{currentVersion}`)} → ${colors.green(`{latestVersion}`)}\nRun ${colors.cyan(`{updateCommand}`)} to update\n\n${colors.gray('Press any key to continue')}`,
+      message: `Update available ${colors.yellow('{currentVersion}')} → ${colors.green('{latestVersion}')}\nRun ${colors.cyan('{updateCommand}')} to update\n\n${colors.gray('Press any key to continue')}`,
       boxenOptions: {
         padding: 1,
         margin: 1,
