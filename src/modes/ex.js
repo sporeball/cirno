@@ -21,6 +21,7 @@ function init () {
 // keypress override
 export function keypress (data) {
   if (data.name === 'return') {
+    // TODO: wire up to some actual commands
     // console.log(command.join(''));
     normalMode();
     return;
@@ -45,6 +46,7 @@ export function keypress (data) {
   }
 }
 
+// switch to normal mode
 function normalMode () {
   term.cursor(false);
   global.cirno.mode = modes.Normal;

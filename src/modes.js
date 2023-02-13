@@ -8,7 +8,7 @@ import Normal from './modes/normal.js';
 
 /**
  * default export is a single object containing every imported mode
- * other files shoudl import this as `modes`
+ * other files should import this as `modes`
  */
 export default {
   Ex,

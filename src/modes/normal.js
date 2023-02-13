@@ -3,9 +3,13 @@
  * cirno is in this mode most of the time
  */
 
+import * as at from '../at.js';
 import Mode from '../mode.js';
 import modes from '../modes.js';
 import * as term from '../terminal.js';
+
+function init() {
+}
 
 // example function
 function sayHello () {
@@ -22,7 +26,11 @@ function exMode () {
 }
 
 const Normal = new Mode('normal')
-  .addCommand({ sequence: 'H', fn: sayHello })
-  .addCommand({ sequence: ':', fn: exMode });
+  // .addCommand({ sequence: 'H', fn: sayHello })
+  .addCommand({ sequence: ':', fn: exMode })
+  .addCommand({ sequence: 'h', fn: () => at.moveBy(-1, 0) })
+  .addCommand({ sequence: 'j', fn: () => at.moveBy(0, 1) })
+  .addCommand({ sequence: 'k', fn: () => at.moveBy(0, -1) })
+  .addCommand({ sequence: 'l', fn: () => at.moveBy(1, 0) })
 
 export default Normal;

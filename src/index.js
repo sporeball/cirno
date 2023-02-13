@@ -1,5 +1,6 @@
 import readline from 'readline';
 
+import * as at from './at.js';
 import * as term from './terminal.js';
 import emitter from './event.js';
 import Normal from './modes/normal.js';
@@ -23,6 +24,8 @@ export function init () {
   process.stdin.on('keypress', (str, data) => {
     emitter.emit('keypress', data);
   });
+
+  at.draw();
 }
 
 /**
