@@ -1,0 +1,63 @@
+type chip
+
+:
+pin 14
+pos 0 0
+vcc
+
+:
+pin 13
+label '4b
+
+:
+pin 12
+label '4a
+
+:
+pin 11
+label '4y
+value and '4a '4b .
+
+:
+pin 10
+label '3b
+
+:
+pin 9
+label '3a
+
+:
+pin 8
+label '3y
+value and '3a '3b .
+
+:
+pin 1
+pos 0 2
+label '1a
+
+:
+pin 2
+label '1b
+
+:
+pin 3
+label '1y
+value and '1a '1b .
+
+:
+pin 4
+label '2a
+
+:
+pin 5
+label '2b
+
+:
+pin 6
+label '2y
+value and '2a '2b .
+
+:
+pin 7
+gnd

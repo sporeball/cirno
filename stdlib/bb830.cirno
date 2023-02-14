@@ -1,0 +1,74 @@
+type object
+
+row
+  start 2,0
+  data 5o1_5o1_5o1_5o1_5o1_5o1_5o1_5o1_5o1_5o
+  label +
+  volts 5
+end
+
+row
+  start 2,1
+  data 5o1_5o1_5o1_5o1_5o1_5o1_5o1_5o1_5o1_5o
+  label -
+end
+
+row
+  start 0,3
+  data 63o
+  label A
+end
+
+row
+  start 0,4
+  data 63o
+  label B
+end
+
+row
+  start 0,5
+  data 63o
+  label C
+end
+
+row
+  start 0,6
+  data 63o
+  label D
+end
+
+row
+  start 0,7
+  data 63o
+  label E
+end
+
+row
+  start 0,9
+  data 63o
+  label F
+end
+
+row
+  start 0,10
+  data 63o
+  label G
+end
+
+row
+  start 0,11
+  data 63o
+  label H
+end
+
+row
+  start 0,12
+  data 63o
+  label I
+end
+
+row
+  start 0,13
+  data 63o
+  label J
+end

@@ -12,11 +12,14 @@ function init() {
 }
 
 // example function
-function sayHello () {
-  console.log('hello cirno!');
-}
+// function sayHello () {
+//   console.log('hello cirno!');
+// }
 
-// switch to ex mode
+/**
+ * switch to ex mode
+ * key: `:`
+ */
 function exMode () {
   term.move(1, process.stdout.rows - 1);
   term.cursor(true);
