@@ -1,7 +1,13 @@
 import fs from 'fs';
 import path from 'path';
 
-import tokenize from './tokenizer/project.js';
+import tokenize from './tokenizer.js';
+
+let chips = [];
+
+const parseRules = {
+  // ...
+}
 
 /**
  * read a project from a file
