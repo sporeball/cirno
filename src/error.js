@@ -41,3 +41,11 @@ function draw () {
     process.stdout.write(colors.bgRed('E: ' + errors[i]));
   }
 }
+
+/**
+ * return whether there are any errors on the stack
+ * @returns {boolean}
+ */
+export function any () {
+  return errors.length > 0;
+}
