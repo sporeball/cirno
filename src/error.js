@@ -4,15 +4,18 @@ import * as term from './terminal.js';
 
 let errors = [];
 
+/**
+ * throw an error
+ * @param {string} message
+ */
 export default function error (message) {
-  push(message);
+  errors.push(message);
   draw();
-
-  term.move(1, process.stdout.rows - 1);
-  term.clearLine();
-  process.stdout.write(colors.bgRed('E: ' + message));
 }
 
+/**
+ * clear all errors
+ */
 export function clear () {
   for (let i = 0; i < errors.length; i++) {
     term.move(
@@ -24,6 +27,9 @@ export function clear () {
   errors = [];
 }
 
+/**
+ * draw all errors
+ */
 function draw () {
   // todo: repeated code??
   for (let i = 0; i < errors.length; i++) {
@@ -34,8 +40,4 @@ function draw () {
     term.clearLine();
     process.stdout.write(colors.bgRed('E: ' + errors[i]));
   }
-}
-
-function push (message) {
-  errors.push(message);
 }

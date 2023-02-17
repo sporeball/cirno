@@ -8,6 +8,11 @@ const tokenTypes = {
   separator: /^:$/g
 }
 
+/**
+ * tokenize a cirno file
+ * @param {string} code
+ * @returns {string[]}
+ */
 export default function tokenize (code) {
   if (code === undefined) {
     return;
