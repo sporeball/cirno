@@ -1,10 +1,6 @@
-import fs from 'fs';
-import path from 'path';
-
 import error from './error.js';
 import tokenize from './tokenizer.js';
-
-let chips = [];
+import { readFile } from './util.js';
 
 const parseRules = {
   // ...
@@ -15,10 +11,10 @@ const parseRules = {
  * @param {string} filename
  */
 export function read (filename) {
-  const code = fs.readFileSync(path.join(path.resolve(), filename), { encoding: 'utf-8' });
+  const code = readFile(filename);
   const tokens = tokenize(code);
   // type check
-  if (tokens[0].value !== 'type' || tokens[1].value !== 'project') {
+  if (tokens?.[0].value !== 'type' || tokens?.[1].value !== 'project') {
     return error('could not open project');
   }
   tokens.shift();

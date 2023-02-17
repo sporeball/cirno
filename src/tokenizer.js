@@ -1,3 +1,5 @@
+import error from './error.js';
+
 const tokenTypes = {
   identifier: /^'.+/g,
   keyword: /^[a-z][a-z0-9]*/g,
@@ -7,6 +9,9 @@ const tokenTypes = {
 }
 
 export default function tokenize (code) {
+  if (code === undefined) {
+    return;
+  }
   const stream = code
     .split('\n')
     .filter(line => line.length !== 0)
@@ -15,6 +20,9 @@ export default function tokenize (code) {
   for (const word of stream) {
     const match = Object.entries(tokenTypes)
       .find(entry => word.match(entry[1]));
+    if (match === undefined) {
+      return error(`no matching token type found: ${word}`);
+    }
     tokens.push({
       type: match[0],
       value: word.match(match[1])[0]

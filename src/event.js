@@ -1,6 +1,7 @@
 import e from 'events';
 // import { pEvent } from 'p-event';
 
+import * as error from './error.js';
 import * as cirno from './index.js';
 import modes from './modes.js';
 
@@ -18,6 +19,8 @@ async function keypressEvent (data) {
   if (data.ctrl && data.name === 'c') {
     return cirno.exit();
   }
+
+  error.clear();
 
   // look for a command provided by the current mode
   if (Object.keys(global.cirno.mode.commands || {}).includes(data.sequence)) {
