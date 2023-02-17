@@ -4,17 +4,12 @@
 
 import * as term from './terminal.js';
 
-let x = Math.floor(process.stdout.columns / 2);
-let y = Math.floor(process.stdout.rows / 2);
+let x = 0;
+let y = 0;
 
 export function move (newX, newY) {
-  // erase at the old position
-  term.move(x, y);
-  process.stdout.write(' ');
-  // draw at the new position
   x = newX;
   y = newY;
-  draw();
 }
 
 export function moveBy (offsetX, offsetY) {
@@ -22,6 +17,9 @@ export function moveBy (offsetX, offsetY) {
 }
 
 export function draw () {
-  term.move(x, y);
+  term.move(
+    Math.floor(process.stdout.columns / 2),
+    Math.floor(process.stdout.rows / 2)
+  );
   process.stdout.write('@');
 }
