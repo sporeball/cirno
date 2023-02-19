@@ -1,35 +1,13 @@
 import error, * as errors from './error.js';
 
 /**
- * object of parsing rules
- * a rule will be executed if `tokens[0].value` matches the rule's key
- */
-const rules = {
-  ':': (tokens) => {
-    shift(tokens);
-    // TODO: make room for the next chip here
-  },
-  'atpos': (tokens) => {
-    shift(tokens);
-    const x = shift(tokens, 'number');
-    const y = shift(tokens, 'number');
-    // TODO: do the right thing
-  },
-  'type': (tokens) => {
-    shift(tokens);
-    const type = shift(tokens, 'keyword');
-    // TODO: verify
-  }
-}
-
-/**
  * remove one token, and return its value
  * @param {object[]} tokens
  * @param {string} [type]
  * @param {string} [value]
  * @returns {object}
  */
-function shift (tokens, type, value) {
+export function shift (tokens, type, value) {
   if (tokens.length === 0) {
     return error(
       `expected token of type ${type}, found EOF`
@@ -49,26 +27,25 @@ function shift (tokens, type, value) {
 }
 
 /**
- * execute a parsing rule, removing one or more tokens
+ * parse a cirno file using a certain list of rules
  * @param {object[]} tokens
+ * @param {object} rules
  */
-function eat (tokens) {
-  const rule = rules[tokens[0].value];
-  if (rule === undefined) {
-    return error(
-      `parser: no matching rule found: ${tokens[0].value}`
-    );
-  }
-  rule(tokens);
-}
-
-export default function parse (tokens) {
+export default function parse (tokens, rules) {
   if (tokens === undefined) {
     return;
   }
   while (tokens.length > 0) {
-    // execute a parse rule
-    eat(tokens);
+    // find a rule
+    const rule = rules[tokens[0].value];
+    // return if there isn't one
+    if (rule === undefined) {
+      return error(
+        `parser: no matching rule found: ${tokens[0].value}`
+      );
+    }
+    // execute the rule
+    rule(tokens);
     // return if this threw an error
     if (errors.any()) {
       return error('parser: failed to execute a rule');
