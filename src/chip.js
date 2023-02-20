@@ -1,4 +1,3 @@
-import * as chip from './chip.js';
 import error, * as errors from './error.js';
 import log from './log.js';
 import parse, { shift } from './parser.js';
@@ -7,19 +6,27 @@ import { readFile2 } from './util.js';
 
 let currentObject;
 
-// rules for parsing projects
+// rules for parsing chips
 export const parsingRules = {
   ':': (tokens, object) => {
     shift(tokens);
     currentObject = {};
   },
-  chip: (tokens, object) => {
+  '.': (tokens, object) => {
     shift(tokens);
-    const name = shift(tokens, 'keyword');
-    // try to pull it from the standard library
-    currentObject = chip.read('stdlib/' + name + '.cic');
-    // TODO: try to pull it from outside the standard library
-    object.chips.push(currentObject);
+  },
+  gnd: (tokens, object) => {
+    shift(tokens);
+    currentObject.gnd = true;
+  },
+  label: (tokens, object) => {
+    shift(tokens);
+    currentObject.label = shift(tokens, 'identifier');
+  },
+  pin: (tokens, object) => {
+    shift(tokens);
+    const n = shift(tokens, 'number');
+    object.pins[Number(n)] = currentObject;
   },
   pos: (tokens, object) => {
     shift(tokens);
@@ -27,27 +34,36 @@ export const parsingRules = {
     const y = shift(tokens, 'number');
     currentObject.x = Number(x);
     currentObject.y = Number(y);
+  },
+  value: (tokens, object) => {
+    // TODO
+    while (tokens.length > 0 && tokens[0].type !== 'ender') {
+      shift(tokens);
+    }
+  },
+  vcc: (tokens, object) => {
+    shift(tokens);
+    currentObject.vcc = true;
   }
 };
 
 /**
- * read a project from a file
+ * read a chip from a file
  * @param {string} filename
  * @returns {object}
  */
 export function read (filename) {
-  if (!filename.endsWith('.cip')) {
+  if (!filename.endsWith('.cic')) {
     return error(`invalid filetype: ${filename}`);
   }
   const object = {
-    chips: []
+    pins: {}
   };
   const code = readFile2(filename);
   const tokens = tokenize(code);
   const result = parse(tokens, parsingRules, object);
   if (errors.any()) {
-    return error('could not open project');
+    return error('could not parse chip');
   }
-  log(object);
   return result;
 }

@@ -32,13 +32,10 @@ export function shift (tokens, type, value) {
  * @param {object} rules
  * @returns {object}
  */
-export default function parse (tokens, rules) {
+export default function parse (tokens, rules, object) {
   if (tokens === undefined) {
     return;
   }
-  // this object will be returned after parsing is finished
-  // rules are allowed to affect it
-  const object = {};
   // while there are still some tokens remaining...
   while (tokens.length > 0) {
     // find a rule, returning if there isn't one
