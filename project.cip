@@ -1,1 +1,2 @@
 : chip ls0xx/sn74ls08 pos 10 10
+: chip ls0xx/sn74ls08 pos 20 10

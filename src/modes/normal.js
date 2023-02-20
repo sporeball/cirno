@@ -6,11 +6,11 @@
 import * as at from '../at.js';
 import Mode from '../mode.js';
 import modes from '../modes.js';
+import * as project from '../project.js';
 import * as term from '../terminal.js';
 
 function init() {
-  term.clear();
-  at.draw();
+  project.draw();
 }
 
 /**

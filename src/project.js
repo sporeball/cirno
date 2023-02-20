@@ -1,8 +1,11 @@
+import * as at from './at.js';
 import * as chip from './chip.js';
 import error, * as errors from './error.js';
 import log from './log.js';
 import parse, { shift } from './parser.js';
+import * as term from './terminal.js';
 import tokenize from './tokenizer.js';
+import * as UI from './ui.js';
 import { readFile2 } from './util.js';
 
 let currentObject;
@@ -29,6 +32,12 @@ export const parsingRules = {
     currentObject.y = Number(y);
   }
 };
+
+export function draw () {
+  term.clear();
+  UI.drawProject(global.cirno.project);
+  at.draw();
+}
 
 /**
  * read a project from a file
