@@ -3,6 +3,7 @@ import colors from 'picocolors';
 import modes from './modes.js';
 
 function toString (value) {
+  // TODO: nicer objects and arrays like console.log might have
   if (value === undefined) {
     return colors.gray('undefined');
   }
@@ -16,7 +17,7 @@ function toString (value) {
     return colors.yellow(value);
   }
   if (Array.isArray(value)) {
-    return value.map(toString).join(', ');
+    return '[ ' + value.map(toString).join(', ') + ' ]';
   }
   if (typeof value === 'object') {
     return `${value.constructor.name} {\n` +
