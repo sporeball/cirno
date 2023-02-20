@@ -39,3 +39,10 @@ export function move (x, y) {
   // the escape sequence puts y first!
   process.stdout.write(`\x1b[${y};${x}H`);
 }
+
+/**
+ * move the cursor to the beginning of the next line
+ */
+export function nextLine () {
+  process.stdout.write('\x1b[1E');
+}

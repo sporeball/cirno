@@ -3,6 +3,7 @@ import e from 'events';
 
 import * as error from './error.js';
 import * as cirno from './index.js';
+import log from './log.js';
 import modes from './modes.js';
 
 // default export
@@ -30,7 +31,7 @@ async function keypressEvent (data) {
     return modes.Ex.keypress(data);
   } else {
     // debug
-    console.log(data);
+    log(data);
   }
   // TODO
 }

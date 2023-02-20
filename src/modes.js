@@ -3,6 +3,7 @@
  * for the class itself, see mode.js
  */
 
+import Console from './modes/console.js';
 import Ex from './modes/ex.js';
 import Normal from './modes/normal.js';
 
@@ -11,6 +12,7 @@ import Normal from './modes/normal.js';
  * other files should import this as `modes`
  */
 export default {
+  Console,
   Ex,
   Normal
 };

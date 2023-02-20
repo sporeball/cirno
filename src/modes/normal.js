@@ -9,12 +9,9 @@ import modes from '../modes.js';
 import * as term from '../terminal.js';
 
 function init() {
+  term.clear();
+  at.draw();
 }
-
-// example function
-// function sayHello () {
-//   console.log('hello cirno!');
-// }
 
 /**
  * switch to ex mode
@@ -28,9 +25,19 @@ function exMode () {
   global.cirno.mode = modes.Ex;
 }
 
+/**
+ * switch to console mode
+ * key: `C`
+ */
+function consoleMode () {
+  modes.Console.init();
+  global.cirno.mode = modes.Console;
+}
+
 const Normal = new Mode('normal')
-  // .addCommand({ sequence: 'H', fn: sayHello })
+  .addProperty({ name: 'init', value: init })
   .addCommand({ sequence: ':', fn: exMode })
+  .addCommand({ sequence: 'C', fn: consoleMode })
   .addCommand({ sequence: 'h', fn: () => at.moveBy(-1, 0) })
   .addCommand({ sequence: 'j', fn: () => at.moveBy(0, 1) })
   .addCommand({ sequence: 'k', fn: () => at.moveBy(0, -1) })

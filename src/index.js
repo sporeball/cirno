@@ -11,7 +11,8 @@ import Normal from './modes/normal.js';
 export function init () {
   global.cirno = {
     version: '0.0.0', // need to do it this way to avoid a warning
-    mode: Normal
+    mode: Normal,
+    log: []
   };
 
   readline.emitKeypressEvents(process.stdin);
