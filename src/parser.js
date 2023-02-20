@@ -30,25 +30,29 @@ export function shift (tokens, type, value) {
  * parse a cirno file using a certain list of rules
  * @param {object[]} tokens
  * @param {object} rules
+ * @returns {object}
  */
 export default function parse (tokens, rules) {
   if (tokens === undefined) {
     return;
   }
+  // this object will be returned after parsing is finished
+  // rules are allowed to affect it
+  const object = {};
+  // while there are still some tokens remaining...
   while (tokens.length > 0) {
-    // find a rule
+    // find a rule, returning if there isn't one
     const rule = rules[tokens[0].value];
-    // return if there isn't one
     if (rule === undefined) {
       return error(
         `parser: no matching rule found: ${tokens[0].value}`
       );
     }
-    // execute the rule
-    rule(tokens);
-    // return if this threw an error
+    // execute the rule, returning if this throws an error
+    rule(tokens, object);
     if (errors.any()) {
       return error('parser: failed to execute a rule');
     }
   }
+  return object;
 }

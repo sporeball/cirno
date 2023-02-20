@@ -2,7 +2,7 @@ import error from './error.js';
 
 const tokenTypes = {
   identifier: /^'.+/g,
-  keyword: /^[a-z][a-z0-9]*/g,
+  keyword: /^[a-z][a-z0-9/]*/g,
   number: /^0$|^[1-9][0-9]*/g,
   ender: /^\.$/,
   separator: /^:$/g

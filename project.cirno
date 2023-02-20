@@ -1,6 +1,0 @@
-type project
-atpos 5 5
-
-:
-chip sn74ls08
-pos 10 10
