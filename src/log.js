@@ -3,6 +3,9 @@ import colors from 'picocolors';
 import modes from './modes.js';
 
 function toString (value) {
+  if (value === undefined) {
+    return colors.gray('undefined');
+  }
   if (typeof value === 'number') {
     return colors.yellow(value);
   }
