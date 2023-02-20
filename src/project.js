@@ -26,10 +26,8 @@ export const parsingRules = {
   },
   pos: (tokens, object) => {
     shift(tokens);
-    const x = shift(tokens, 'number');
-    const y = shift(tokens, 'number');
-    currentObject.x = Number(x);
-    currentObject.y = Number(y);
+    currentObject.x = shift(tokens, 'number');
+    currentObject.y = shift(tokens, 'number');
   }
 };
 

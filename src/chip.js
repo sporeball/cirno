@@ -26,14 +26,12 @@ export const parsingRules = {
   pin: (tokens, object) => {
     shift(tokens);
     const n = shift(tokens, 'number');
-    object.pins[Number(n)] = currentObject;
+    object.pins[n] = currentObject;
   },
   pos: (tokens, object) => {
     shift(tokens);
-    const x = shift(tokens, 'number');
-    const y = shift(tokens, 'number');
-    currentObject.x = Number(x);
-    currentObject.y = Number(y);
+    currentObject.x = shift(tokens, 'number');
+    currentObject.y = shift(tokens, 'number');
   },
   value: (tokens, object) => {
     // TODO

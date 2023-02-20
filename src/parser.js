@@ -8,6 +8,7 @@ import error, * as errors from './error.js';
  * @returns {object}
  */
 export function shift (tokens, type, value) {
+  // validation
   if (tokens.length === 0) {
     return error(
       `expected token of type ${type}, found EOF`
@@ -22,6 +23,10 @@ export function shift (tokens, type, value) {
     return error(
       `expected token with value ${value}, got ${tokens[0].value}`
     );
+  }
+  // special case for numbers
+  if (tokens[0].type === 'number') {
+    return Number(tokens.shift().value);
   }
   return tokens.shift().value;
 }
