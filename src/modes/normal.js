@@ -10,6 +10,7 @@ import * as project from '../project.js';
 import * as term from '../terminal.js';
 
 function init() {
+  term.clear();
   project.draw();
 }
 

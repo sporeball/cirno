@@ -1,6 +1,7 @@
 import colors from 'picocolors';
 
 import * as at from './at.js';
+import log from './log.js';
 import * as term from './terminal.js';
 
 /**
@@ -48,13 +49,17 @@ export function drawChip (chip) {
       return error('failed to draw pin: missing coordinate');
     }
     // move
-    // @ 5, 5
-    // chip 10, 10
-    term.move(
-      Math.floor(process.stdout.columns / 2) + x + value.x - atX,
-      Math.floor(process.stdout.rows / 2) + y + value.y - atY
-    );
+    const visualX = Math.floor(process.stdout.columns / 2) + x + value.x - atX;
+    const visualY = Math.floor(process.stdout.rows / 2) + y + value.y - atY;
+    term.move(visualX, visualY);
     process.stdout.write('.');
+    // over check
+    if (
+      visualX === Math.floor(process.stdout.columns / 2) &&
+      visualY === Math.floor(process.stdout.rows / 2)
+    ) {
+      reportPin(pin);
+    }
   }
 }
 
@@ -62,4 +67,21 @@ export function drawProject (project) {
   for (const chip of project.chips) {
     drawChip(chip);
   }
+}
+
+function reportPin (pin) {
+  const [key, value] = pin;
+  term.move(1, process.stdout.rows - 2);
+  // TODO: logging here is a bug
+  // log(pin);
+  if (value.vcc === true) {
+    return process.stdout.write(colors.red('vcc'));
+  }
+  if (value.gnd === true) {
+    return process.stdout.write(colors.blue('gnd'));
+  }
+  if (value.label !== undefined) {
+    return process.stdout.write(colors.cyan(value.label));
+  }
+  return process.stdout.write(`pin ${key}`);
 }
