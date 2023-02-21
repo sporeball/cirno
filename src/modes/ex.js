@@ -3,6 +3,7 @@
  * used for executing commands
  */
 
+import commands from '../commands.js';
 import Mode from '../mode.js';
 import modes from '../modes.js';
 import * as term from '../terminal.js';
@@ -21,7 +22,9 @@ function init () {
 export function keypress (data) {
   if (data.name === 'return') {
     // TODO: wire up to some actual commands
-    // console.log(command.join(''));
+    if (command.join('') in commands) {
+      commands[command.join('')]();
+    }
     normalMode();
     return;
   }

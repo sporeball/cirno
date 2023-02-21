@@ -44,6 +44,5 @@ const Normal = new Mode('normal')
   .addCommand({ sequence: 'j', fn: () => at.moveBy(0, 1) })
   .addCommand({ sequence: 'k', fn: () => at.moveBy(0, -1) })
   .addCommand({ sequence: 'l', fn: () => at.moveBy(1, 0) })
-  .addExCommand({ value: ':q', fn: () => cirno.exit() });
 
 export default Normal;
