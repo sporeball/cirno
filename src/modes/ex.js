@@ -5,7 +5,6 @@
 
 import Mode from '../mode.js';
 import modes from '../modes.js';
-import Normal from './normal.js';
 import * as term from '../terminal.js';
 
 let c;

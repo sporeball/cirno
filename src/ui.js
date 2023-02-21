@@ -1,7 +1,7 @@
 import colors from 'picocolors';
 
 import * as at from './at.js';
-import log from './log.js';
+import error from './error.js';
 import * as term from './terminal.js';
 
 /**
@@ -44,7 +44,7 @@ export function drawChip (chip) {
   const { x, y } = chip;
   const [atX, atY] = at.position();
   for (const pin of Object.entries(chip.pins)) {
-    const [key, value] = pin;
+    const value = pin[1];
     if (value.x === undefined || value.y === undefined) {
       return error('failed to draw pin: missing coordinate');
     }

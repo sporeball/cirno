@@ -1,5 +1,4 @@
 import error, * as errors from './error.js';
-import log from './log.js';
 import parse, { shift } from './parser.js';
 import tokenize from './tokenizer.js';
 import { readFile2 } from './util.js';

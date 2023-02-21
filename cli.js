@@ -3,10 +3,7 @@
 import * as cirno from './src/index.js';
 // import log from './src/log.js';
 import * as project from './src/project.js';
-import { drawProject } from './src/ui.js';
 import * as notifier from './src/update-notifier.js';
-import { renderView } from './src/view.js';
-import Splash from './src/views/splash.js';
 
 const file = process.argv[2];
 
@@ -15,7 +12,6 @@ async function cli () {
   await notifier.checkUpdate();
   // TODO: await splash instead, then render something else
   // renderView(Splash);
-  let currentProject;
   if (file) {
     global.cirno.project = project.read(file);
   }

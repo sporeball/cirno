@@ -4,12 +4,13 @@
  */
 
 import * as at from '../at.js';
+import * as cirno from '../index.js';
 import Mode from '../mode.js';
 import modes from '../modes.js';
 import * as project from '../project.js';
 import * as term from '../terminal.js';
 
-function init() {
+function init () {
   term.clear();
   project.draw();
 }
@@ -43,5 +44,6 @@ const Normal = new Mode('normal')
   .addCommand({ sequence: 'j', fn: () => at.moveBy(0, 1) })
   .addCommand({ sequence: 'k', fn: () => at.moveBy(0, -1) })
   .addCommand({ sequence: 'l', fn: () => at.moveBy(1, 0) })
+  .addExCommand({ value: ':q', fn: () => cirno.exit() });
 
 export default Normal;

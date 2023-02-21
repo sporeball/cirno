@@ -9,12 +9,12 @@ import Mode from '../mode.js';
 import modes from '../modes.js';
 import * as term from '../terminal.js';
 
-function init() {
+function init () {
   term.clear();
   draw();
 }
 
-function draw() {
+function draw () {
   term.move(1, 1);
   process.stdout.write(colors.yellow('debug log'));
   term.move(1, 3);

@@ -6,7 +6,7 @@ const tokenTypes = {
   number: /^0$|^[1-9][0-9]*/g,
   ender: /^\.$/,
   separator: /^:$/g
-}
+};
 
 /**
  * tokenize a cirno file
