@@ -63,9 +63,46 @@ export function drawChip (chip) {
   }
 }
 
+// TODO: so much repetition
+export function drawNet (net) {
+  if (net.y === undefined) {
+    return error('failed to draw net: missing y coordinate');
+  }
+  const { y } = net;
+  const [, atY] = at.position();
+  const visualY = Math.floor(process.stdout.rows / 2) + y - atY;
+  term.move(1, visualY);
+  if (net.vcc === true) {
+    process.stdout.write(colors.red('+'.repeat(process.stdout.columns)));
+  }
+  if (net.gnd === true) {
+    process.stdout.write(colors.blue('-'.repeat(process.stdout.columns)));
+  }
+  // over check
+  if (
+    visualY === Math.floor(process.stdout.rows / 2)
+  ) {
+    reportNet(net);
+  }
+}
+
 export function drawProject (project) {
+  // TODO: for const object of entire project (will require type information)
   for (const chip of project.chips) {
     drawChip(chip);
+  }
+  for (const net of project.nets) {
+    drawNet(net);
+  }
+}
+
+function reportNet (net) {
+  term.move(1, process.stdout.rows - 2);
+  if (net.vcc === true) {
+    return process.stdout.write(colors.red('vcc net'));
+  }
+  if (net.gnd === true) {
+    return process.stdout.write(colors.blue('gnd net'));
   }
 }
 

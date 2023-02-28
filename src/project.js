@@ -24,6 +24,20 @@ export const parsingRules = {
     // TODO: try to pull it from outside the standard library
     object.chips.push(currentObject);
   },
+  net: (tokens, object) => {
+    shift(tokens);
+    // type
+    const type = shift(tokens, 'keyword');
+    if (type !== 'vcc' && type !== 'gnd') {
+      return error(`invalid net type: ${type}`);
+    }
+    currentObject[type] = true;
+    // y
+    // TODO: make this its own rule?
+    shift(tokens, 'keyword', 'y');
+    currentObject.y = shift(tokens, 'number');
+    object.nets.push(currentObject);
+  },
   pos: (tokens, object) => {
     shift(tokens);
     currentObject.x = shift(tokens, 'number');
@@ -50,7 +64,8 @@ export function read (filename) {
     return error(`invalid filetype: ${filename}`);
   }
   const object = {
-    chips: []
+    chips: [],
+    nets: []
   };
   const code = readFile2(filename);
   const tokens = tokenize(code);
