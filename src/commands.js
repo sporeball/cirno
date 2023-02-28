@@ -9,6 +9,6 @@ const commands = {
     // HACK
     return setTimeout(() => cirno.exit(), 50);
   }
-}
+};
 
 export default commands;

@@ -4,7 +4,7 @@
  */
 
 import * as at from '../at.js';
-import * as cirno from '../index.js';
+// import * as cirno from '../index.js';
 import Mode from '../mode.js';
 import modes from '../modes.js';
 import * as project from '../project.js';
@@ -43,6 +43,6 @@ const Normal = new Mode('normal')
   .addCommand({ sequence: 'h', fn: () => at.moveBy(-1, 0) })
   .addCommand({ sequence: 'j', fn: () => at.moveBy(0, 1) })
   .addCommand({ sequence: 'k', fn: () => at.moveBy(0, -1) })
-  .addCommand({ sequence: 'l', fn: () => at.moveBy(1, 0) })
+  .addCommand({ sequence: 'l', fn: () => at.moveBy(1, 0) });
 
 export default Normal;

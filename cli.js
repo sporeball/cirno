@@ -14,8 +14,8 @@ async function cli () {
   // renderView(Splash);
   if (file) {
     global.cirno.project = project.read(file);
+    project.draw();
   }
-  project.draw();
 }
 
 cli();

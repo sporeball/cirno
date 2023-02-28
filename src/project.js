@@ -32,6 +32,9 @@ export const parsingRules = {
 };
 
 export function draw () {
+  if (global.cirno.project === undefined) {
+    return;
+  }
   term.clear();
   UI.drawProject(global.cirno.project);
   at.draw();
